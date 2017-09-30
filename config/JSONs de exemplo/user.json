@@ -1,0 +1,25 @@
+{
+    "code_cpf" : "0000002020202",
+    "name" : "Cristóvão Olegário",
+    "surname" : "de Castro",
+    "birthdate" : "1997-02-16",
+    "sex" : "male",
+    "email" : "cristovaoolegario@gmail.com",
+    "password" : "PodiaEstarJogandoDestiny2",
+    "create_time" : "0000-00-00",
+    "cellphone" : "038999726946",
+    "phone_number" : "",
+    "image" : "http://potato.com.br",
+
+    "address" : {
+        "id_address_fk" : "",
+        "postal_code" : "31980-160",
+        "location" : "Brazil",
+        "type_location" : "WTF IS THAT",
+        "neighborhood" : "São Gabriel",
+        "city" : "Belo Horizonte",
+        "state" : "MG",
+        "number_house" : 99,
+        "complement" : "Apto 202"
+    }
+}
