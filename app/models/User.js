@@ -1,32 +1,53 @@
-var dbConnection = require("./../../config/dbConnection");
-var connection = dbConnection();
+import { Address } from "address.js";
+var userService = require("../services/user_service.js");
 
-var User = {
+class User
+{
+    constructor(user_id, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, address){        
+        if(address instanceof Address){            
+            if(user_id != null){
+                this._id = user_id;
+            }
+            else{
+                this._id = null;
+            }
 
-    getAllUsers : function(callback){
-        return connection.query("SELECT * FROM User", callback);
-    },
-
-    getUserById : function(id, callback){
-        return connection.query("SELECT * FROM User WHERE ID_USER = ?", [id], callback);
-    },
-
-    addUser : function(user, callback){
-        return connection.query("INSERT INTO USER (CODE_CPF, NAME, SURNAME, BIRTHDATE, SEX, EMAIL, PASSWORD, CREATE_TIME, CELLPHONE, PHONENUMBER, IMAGE, ID_ADDRESS_FK) values (?,?,?,?,?,?,?,?,?,?,?,?);"
-        ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.create_time, user.cellphone, user.phonenumber, user.image, user.id_address_fk], callback)
-    },   
-
-    updateUser : function(id, user, callback){
-       /// return connection.query("UPDATE User SET ?????????? WHERE Id = ?")
-    },
-
-    removeUser : function(id, callback){
-        return connection.query("DELETE FROM User WHERE Id = ?", [id], callback);
-    },
-
-    getLoginParams : function(email, callback){
-        return connection.query("SELECT Email, Password, Id_user FROM User WHERE Email = ?", [email], callback);
+            this.code_cpf = code_cpf;
+            this.name = name;
+            this.surname = surname;
+            this.birthdate = birthdate;
+            this.sex = sex;
+            this.email = email;
+            this.password = password;
+            this.create_time = create_time;
+            this.cellphone = cellphone;
+            this.phone_number = phone_number;
+            this.image = image;
+            this.address = address;
+        }
     }
-};
+}
 
-module.exports = User;
+User.prototype.save = function(callback){
+    var user = this;
+    userService.addUser(user, callback);
+}
+
+User.prototype.delete = function(callback){
+    var user = this;
+    userService.removeUser(user._id, callback);
+}
+
+User.prototype.update = function(callback){
+    var user = this;
+    userService.updateUser(user, callback);
+}
+
+User.getAllUsers = function(callback){
+    var usersList = userService.getAllUsers();
+    /*Lógica para instanciar todos os objetos*/
+}
+
+User.findById = function(id, callback){
+    var user = userService.findById(id);
+}

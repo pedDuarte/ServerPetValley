@@ -1,24 +1,42 @@
-var dbConnection = require("./../../config/dbConnection");
-var connection = dbConnection();
+var addressService = require("../services/address_service.js");
 
-var Address = {
+class Address
+{
+    constructor(address_id, postal_code, location, type_location, neighborhood, city, state, number_house, complement){
+        if(address_id != null){
+            this._id = address_id;            
+        }        
+        else{
+            this._id = null;
+        }
 
-    getAddresses : function(callback){
-        return connection.query('SELECT * FROM Address', callback);
-    },
+        this.postal_code = postal_code;
+        this.location = location;
+        this.type_location = type_location;
+        this.neighborhood = neighborhood;
+        this.city = city;
+        this.state = state;
+        this.number_house = number_house;
+        this.complement = complement;
+    };
 
-    getAddressById : function(id, callback){
-        return connection.query('SELECT * FROM Address WHERE ID_ADDRESS = ?', [Id], callback);
-    },
+    static getAllAddresses(){        
+        var addressList = addressService.getAddresses();
+        /*Lógica para instanciar todos os objetos*/
+    };
+}
 
-    addAddress : function(address, callback){
-        return connection.query('INSERT INTO Address (POSTAL_CODE, LOCATION, TYPE_LOCATION, NEIGHBORHOOD, CITY, STATE, COMPLEMENT, NUMBER_HOUSE) values (?,?,?,?,?,?,?,?)'
-        ,[address.postal_code, address.location, address.type_location, address.neighborhood, address.city, address.state, address.complement, address.number_house], callback);
-    },
-
-    getLastAddressInserted : function (callback){
-        return connection.query('SELECT ID_ADDRESS FROM Address ORDER BY DESC LIMIT 1', callback);
-    }
+Address.prototype.save = function(callback){
+    var address = this;
+    addressService.addaddress(address, callback);
 };
 
-module.exports = Address;
+Address.prototype.delete = function(callback){
+    var address = this;
+    addressService.removeaddress(address._id, callback);
+};
+
+Address.prototype.update = function(callback){
+    var address = this;
+    addressService.updateaddress(address, callback);
+};
