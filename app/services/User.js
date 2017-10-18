@@ -17,11 +17,12 @@ var User = {
     },   
 
     updateUser : function(id, user, callback){
-       /// return connection.query("UPDATE User SET ?????????? WHERE Id = ?")
+        return connection.query("UPDATE USER SET(CODE_CPF = ?, NAME = ?, SURNAME = ?, BIRTHDATE = ?, SEX = ?, EMAIL = ?, PASSWORD = ?, CREATE_TIME = ?, CELLPHONE = ?, PHONENUMBER = ?, IMAGE = ?, ID_ADDRESS_FK = ?) WHERE ID_USER = ?;"
+        ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.create_time, user.cellphone, user.phonenumber, user.image, user.id_address_fk, user.id_user], callback)
     },
 
     removeUser : function(id, callback){
-        return connection.query("DELETE FROM User WHERE Id = ?", [id], callback);
+        return connection.query("DELETE FROM User WHERE ID_USER = ?", [id], callback);
     },
 
     getLoginParams : function(email, callback){
