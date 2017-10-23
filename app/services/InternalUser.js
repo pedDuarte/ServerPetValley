@@ -11,9 +11,9 @@ var InternalUser = {
         return connection.query('SELECT * FROM INTERNAL_USER WHERE ID_USER_FK = ?', [id], callback);
     },
 
-    addInternalUser : function(internalUser, callback){
+    addInternalUser : function(internalUser, id_user_fk, callback){
         return connection.query('INSERT INTO INTERNAL_USER (POST, ADMISSION_DATE, SHIFT, IS_VOLUNTEER, WORK_DAYS, DEMISSION_DATE, CRMV, CRMV_UF, ID_USER_FK, ID_USER_GROUPS_FK) VALUES(?,?,?,?,?,?,?,?,?,?)', 
-        [internalUser.post, internalUser.admission_date, internalUser.shift, internalUser.is_volunteer, internalUser.work_days, internalUser.demission_date, internalUser.crmv, internalUser.crmv_uf, internalUser.id_user_fk, internalUser.id_user_groups_fk], callback);
+        [internalUser.post, internalUser.admission_date, internalUser.shift, internalUser.is_volunteer, internalUser.work_days, internalUser.demission_date, internalUser.crmv, internalUser.crmv_uf, id_user_fk, internalUser.id_user_groups_fk], callback);
     },   
 
     updateInternalUser : function(id, user, callback){
