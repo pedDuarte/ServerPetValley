@@ -4,11 +4,11 @@ var connection = dbConnection();
 var Address = {
 
     getAddresses : function(callback){
-        return connection.query('SELECT * FROM Address', callback);
+        return connection.query("SELECT * FROM Address", callback);
     },
 
     getAddressById : function(id, callback){
-        return connection.query('SELECT * FROM Address WHERE ID_ADDRESS = ?', [id], callback);
+        return connection.query("SELECT * FROM Address WHERE ID_ADDRESS = ?", [id], callback);
     },
 
     addAddress : function(address, callback){
@@ -26,7 +26,7 @@ var Address = {
     },
 
     getLastAddressInserted : function (callback){
-        return connection.query('SELECT ID_ADDRESS FROM Address ORDER BY DESC LIMIT 1', callback);
+        return connection.query('SELECT ID_ADDRESS FROM Address ORDER BY 1 DESC LIMIT 1', callback);
     }
 };
 
