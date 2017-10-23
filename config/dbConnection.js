@@ -18,6 +18,6 @@ var dataConnection = {
 module.exports = function()
 {
 	var connection = mysql.createConnection(dataConnection);
-	connection.connect()
+	//connection.connect();
 	return 	connection;
 };
