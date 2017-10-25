@@ -5,10 +5,16 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.post("http://localhost:3000/login",
-        {
-          email: "something@hotmail.com",
-          password: "lalala"
+        $.post("http://localhost:3000/address/add",
+        {            
+            "postal_code" : "31980-160",
+            "location" : "Brazil",
+            "type_location" : "WTF IS THAT",
+            "neighborhood" : "São Gabriel",
+            "city" : "Belo Horizonte",
+            "state" : "MG",
+            "number_house" : 99,
+            "complement" : "Apto 202"
         },
         function(data,status){
             alert("Data: " + data + "\nStatus: " + status);

@@ -1,5 +1,5 @@
-var supply = require('./../models/Supply');
-var type_supply = require('./../models/TypeSupply');
+var supply = require('./../services/Supply');
+var type_supply = require('./../services/TypeSupply');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 
@@ -12,14 +12,14 @@ module.exports = function(app){
         })
     });
 
-    app.get('supply/:id', function(req, res){
+    app.get('/supply/:id', function(req, res){
         supply.getSupplyById(req.params.id, function(error, result){
             if(error)return res.status(400).json(error);
             return res.status(200).json(result);
         })
     });    
 
-    app.post('supply/add', upload.array(), function (req, res, next) {
+    app.post('/supply/add', upload.array(), function (req, res, next) {
 
         var id_type_supply = type_supply.getTypeSupplyByName(req.body.type_supply.name_supply, function(error, result){
             if(error)return res.status(400).json(error);
