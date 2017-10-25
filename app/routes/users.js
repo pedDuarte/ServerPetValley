@@ -74,21 +74,16 @@ module.exports = function(app){
                 res.status(400).json(error);
             }
             else{
-                address.getLastAddressInserted(function(error, result){
-                    if(error) throw error;
-                    else{
-                        user.addUser(req.body, result[0].ID_ADDRESS, function(error, result){
-                            if(error){
-                                res.status(400).json(error);
-                            }
-                            else{
-                                res.status(200).json(result);
-                            }
-                        })
+                console.log(result.insertId);
+                user.addUser(req.body, result.insertId, function(error, result){
+                    if(error){
+                        res.status(400).json(error);
                     }
-                });
-        
-            }
+                    else{
+                        res.status(200).json(result);
+                    }                        
+                });                
+            }        
         });
     });
     

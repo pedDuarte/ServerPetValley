@@ -17,8 +17,8 @@ var User = {
     },
 
     addUser : function(user, id_address_fk, callback){
-        return connection.query("INSERT INTO USER (CODE_CPF, NAME, SURNAME, BIRTHDATE, SEX, EMAIL, PASSWORD, CREATE_TIME, CELLPHONE, PHONE_NUMBER, IMAGE, ID_ADDRESS_FK) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);"
-        ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.create_time, user.cellphone, user.phonenumber, user.image, id_address_fk], callback);
+        return connection.query("INSERT INTO USER (CODE_CPF, NAME, SURNAME, BIRTHDATE, SEX, EMAIL, PASSWORD, CREATE_TIME, CELLPHONE, PHONE_NUMBER, IMAGE, ID_ADDRESS_FK) VALUES(?,?,?,?,?,?,?,now(),?,?,?,?);"
+        ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.cellphone, user.phonenumber, user.image, id_address_fk], callback);
     },   
 
     updateUser : function(id, user, callback){
