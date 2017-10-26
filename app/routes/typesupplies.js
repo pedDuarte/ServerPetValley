@@ -18,7 +18,7 @@ module.exports = function(app){
         })
     });
 
-    app.get('/typesupply/byname/:name', function(req, res){
+    app.get('/typesupply-byname/:name', function(req, res){
         type_supply.getTypeSupplyByName(req.params.name,function(error, result){
             if(error)return res.status(400).json(error);
             return res.status(200).json(result);

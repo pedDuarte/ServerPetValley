@@ -69,13 +69,12 @@ module.exports = function(app){
 
     app.post('/user', upload.array(), function (req, res, next) {
         //Insere o endereço
-         address.addAddress(req.body.address, function(error, result){
+         address.addAddress(req.body.address, function(error, resultAddress){
             if(error){
                 res.status(400).json(error);
             }
             else{
-                console.log(result.insertId);
-                user.addUser(req.body, result.insertId, function(error, result){
+                user.addUser(req.body, resultAddress.insertId, function(error, result){
                     if(error){
                         res.status(400).json(error);
                     }

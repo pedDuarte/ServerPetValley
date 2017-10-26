@@ -20,50 +20,33 @@ module.exports = function(app){
             return res.status(200).json(result);
         })
     });    
-    
-    
 
     app.post('/internal-user', upload.array(), function (req, res, next) {
         //Insere o endereço
-        address.addAddress(req.body.address, function(error, result){
+        address.addAddress(req.body.address, function(error, resultAddress){
             if(error){
                 res.status(400).json(error);
             }
             else{
-                address.getLastAddressInserted(function(error, result){
-                if(error) {
-                    res.status(400).json(error);
-                }
-                else{
-                    //Insere o usuário
-                    user.addUser(req.body, result[0].ID_ADDRESS, function(error, result){
-                        if(error){
-                            res.status(400).json(error);
-                        }
-                        else{
-                            user.getLastUserInserted(function(error, result){
-                                if(error){
-                                    res.status(400).json(error);
-                                }
-                                else{
-                                    //Insere o usuário interno
-                                    internalUser.addInternalUser(req.body.professional_data, result[0].ID_USER, function(error, result){
-                                        if(error){
-                                            console.log(error);
-                                            res.status(400).json(error);
-                                        }
-                                        else{
-                                            res.status(200).json(result);
-                                        }
-                                    });
-                                }
-
-                            });                            
-                        }
-                    })
-                }
-            });
-        }
+                //Insere o usuário
+                user.addUser(req.body, resultAddress.insertId, function(error, resultUser){
+                    if(error){
+                        res.status(400).json(error);
+                    }
+                    else{
+                        //Insere o usuário interno
+                        internalUser.addInternalUser(req.body.professional_data, resultUser.insertId, function(error, result){
+                            if(error){
+                                console.log(error);
+                                res.status(400).json(error);
+                            }
+                            else{
+                                res.status(200).json(result);
+                            }
+                        });
+                    }                            
+                });
+            }                
         });
     });
     

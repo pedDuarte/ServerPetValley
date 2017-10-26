@@ -18,7 +18,7 @@ module.exports - function(app){
         })
     });
 
-    app.post('/animal/add', function(req, res){
+    app.post('/animal', function(req, res){
         animal.addAnimal(req.body, function(error, result){
             if(error){
                 res.status(400).json(error);

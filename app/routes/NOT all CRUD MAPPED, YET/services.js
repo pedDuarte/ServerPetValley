@@ -18,7 +18,7 @@ module.exports = function(app){
         })
     });
 
-    app.post('/service/add', function(req, res){
+    app.post('/service', function(req, res){
         serviceProposal.addService(req.body, function(error, result){
             if(error){
                 res.status(400).json(error);
