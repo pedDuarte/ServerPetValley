@@ -74,6 +74,8 @@ module.exports = function(app){
         //Insere o endereço
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin','*');
+        res.setHeader('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
          address.addAddress(req.body.address, function(error, resultAddress){
             if(error){
                 res.status(400).json(response.onError(error));
