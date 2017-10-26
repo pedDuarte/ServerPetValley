@@ -72,6 +72,8 @@ module.exports = function(app){
 
     app.post('/user', upload.array(), function (req, res, next) {
         //Insere o endereço
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin','*');
          address.addAddress(req.body.address, function(error, resultAddress){
             if(error){
                 res.status(400).json(response.onError(error));
