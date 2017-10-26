@@ -12,7 +12,7 @@ var TypeSupply = {
         },
 
         getTypeSupplyByName : function(name, callback){
-            return connection.query("SELECT * FROM Type_supply WHERE NAME_SUPPLY LIKE ?", "%"+[name]+"%", callback);
+            return connection.query("SELECT ID_TYPE_SUPPLY FROM Type_supply WHERE NAME_SUPPLY LIKE ?", "%"+[name]+"%", callback);
         },
     
         addTypeSupplyy : function(type_supply, callback){

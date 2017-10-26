@@ -21,8 +21,8 @@ var Supply = {
          [supply.description, supply.expiration_date, supply.entry_date, supply.quantity, supply.update_date, supply.id_user_fk, supply.id_type_supply, supply.id_supply], callback)
     },
 
-    removeSupply : function(id, callback){
-        return connection.query("DELETE FROM SUPPLY WHERE ID_SUPPLY = ?", [id], callback);
+    removeSupply : function(id_supply, callback){
+        return connection.query("DELETE FROM SUPPLY WHERE ID_SUPPLY = ?", [id_supply], callback);
     }
 
 };
