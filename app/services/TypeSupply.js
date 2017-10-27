@@ -15,7 +15,7 @@ var TypeSupply = {
             return connection.query("SELECT ID_TYPE_SUPPLY FROM Type_supply WHERE NAME_SUPPLY LIKE ?", "%"+[name]+"%", callback);
         },
     
-        addTypeSupplyy : function(type_supply, callback){
+        addTypeSupply : function(type_supply, callback){
             return connection.query("INSERT INTO Type_supply (NAME_SUPPLY, UNIT) VALUES(?,?)",
             [type_supply.name_supply, type_supply.unit], callback);
         },

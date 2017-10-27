@@ -23,11 +23,11 @@ var Address = {
 
     removeAddress : function(id, callback){
         return connection.query('DELETE FROM Address WHERE ID_ADDRESS = ?', [id], callback);
-    },
+    }/*,
 
     getLastAddressInserted : function (callback){
         return connection.query('SELECT ID_ADDRESS FROM Address ORDER BY 1 DESC LIMIT 1', callback);
-    }
+    }*/
 };
 
 module.exports = Address;

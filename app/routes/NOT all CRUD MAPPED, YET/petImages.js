@@ -12,7 +12,7 @@ module.exports = function(app){
         })
     });
 
-    app.post('/pet-images', function(req, res){
+    app.post('/pet-images', upload.array(), function(req, res){
         pet_images.addPetImages(req.body, function(error, result){
             if(error){
                 res.status(400).json(error);

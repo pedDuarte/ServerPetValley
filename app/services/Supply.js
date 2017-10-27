@@ -12,8 +12,8 @@ var Supply = {
     },
 
     addSupply : function(supply, callback){
-        return connection.query("INSERT INTO SUPPLY (DESCRIPTION, EXPIRATION_DATE, ENTRY_DATE, QUANTITY, UPDATE_DATE, ID_USER_FK, ID_TYPE_SUPPLY) VALUES(?,?,?,?,?,?,?)"
-        ,[supply.description, supply.expiration_date, supply.entry_date, supply.quantity, supply.update_date, supply.id_user_fk, supply.id_typesupply],callback);
+        return connection.query("INSERT INTO SUPPLY (DESCRIPTION, EXPIRATION_DATE, ENTRY_DATE, QUANTITY, UPTADE_DATE, ID_USER_FK, ID_TYPE_SUPPLY) VALUES(?,?,?,?,?,?,?)"
+        ,[supply.description, supply.expiration_date, supply.entry_date, supply.quantity, supply.update_date, supply.id_user_fk, supply.id_type_supply],callback);
     },
 
     updateSupply : function(supply, callback){

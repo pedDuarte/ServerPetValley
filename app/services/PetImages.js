@@ -3,7 +3,7 @@ var connection = dbConnection();
 
 var PetImages = {
 /*SALVAR A IMAGEM NO DIRETÓRIO DO SERVER, TIPO UM FTP */
-    getPetImagesById : function(id_animal, callback){
+    getPetImagesByAnimalId : function(id_animal, callback){
         return connection.query('SELECT * FROM PET_IMAGES WHERE ID_ANIMAL_FK = ?', 
         [id_animal], callback);
     },

@@ -7,12 +7,12 @@ var ServiceProposal = {
         return connection.query('SELECT * FROM SERVICE_PROPOSAL WHERE 1=1', callback);
     },
 
-    getServiceProposalById : function(id, callback){
-        return connection.query('SELECT * FROM SERVICE_PROPOSAL WHERE ID_SERVICE = ?', [id], callback);
+    getServiceProposalByUserId : function(id, callback){
+        return connection.query('SELECT * FROM SERVICE_PROPOSAL WHERE ID_USER_FK = ?', [id], callback);
     },
 
     addServiceProposal : function(serviceProposal, callback){
-        return connection.query('INSERT INTO SERVICE_PROPOSAL(DATE_SERVICE, APPROVED, ID_TYPE_SERVICE_FK, ID_USER_FK) VALUES()',
+        return connection.query('INSERT INTO SERVICE_PROPOSAL(DATE_SERVICE, APPROVED, ID_TYPE_SERVICE_FK, ID_USER_FK) VALUES(?, ?, ?, ?)',
         [serviceProposal.date_service, serviceProposal.approved, serviceProposal.id_type_service_fk, serviceProposal.id_user_fk], callback);
     },
 
@@ -21,8 +21,8 @@ var ServiceProposal = {
         [serviceProposal.date_service, serviceProposal.approved, serviceProposal.id_service_proposal], callback);
     },
 
-    removeServiceProposal : function(id, callback){
-        return connection.query('DELETE FROM SERVICE_PROPOSAL WHERE ID_SERVICE_PROPOSAL = ?', [id], callback);
+    removeServiceProposal : function(id_service, callback){
+        return connection.query('DELETE FROM SERVICE_PROPOSAL WHERE ID_SERVICE_PROPOSAL = ?', [id_service], callback);
     }
 };
 
