@@ -1,0 +1,614 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PetValley",
+		"_postman_id": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuário Comum",
+			"description": "",
+			"item": [
+				{
+					"name": "Cadastro de Usuário comum",
+					"request": {
+						"url": "http://localhost:3000/user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code_cpf\" : \"1000\",\n    \"name\" : \"Pedro Lucas\",\n    \"surname\" : \"Duarte \",\n    \"birthdate\" : \"1997-02-16 00:12:\",\n    \"sex\" : \"male\",\n    \"email\" : \"pedrolu@gmail.com\",\n    \"password\" : \"PodiaEstarJogandoDestiny2\",\n    \"create_time\" : \"0000-00-00 12:00\",\n    \"cellphone\" : \"038999726946\",\n    \"phone_number\" : \"2212\",\n    \"image\" : \"http://potato.com.br\",\n\n    \"address\" : {\n        \"postal_code\" : \"31980-160\",\n        \"location\" : \"Brazil\",\n        \"type_location\" : \"Rua lalala\",\n        \"neighborhood\" : \"São Gabriel\",\n        \"city\" : \"Belo Horizonte\",\n        \"state\" : \"MG\",\n        \"number_house\" : 99,\n        \"complement\" : \"Apto 202\"\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de usuário comum",
+					"request": {
+						"url": "http://localhost:3000/user",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 4\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Usuário por nome",
+					"request": {
+						"url": "http://localhost:3000/user/byname/cristovao",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Usuário por ID",
+					"request": {
+						"url": "http://localhost:3000/user/5",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de usuário",
+					"request": {
+						"url": "http://localhost:3000/user",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de pelo CPF",
+					"request": {
+						"url": "http://localhost:3000/user/bycpf/1000",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário Interno",
+			"description": "",
+			"item": [
+				{
+					"name": "Cadastro de Usuário Interno",
+					"request": {
+						"url": "http://localhost:3000/internal-user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code_cpf\" : \"0000002020202\",\n    \"name\" : \"Cristóvão Olegário\",\n    \"surname\" : \"de Castro\",\n    \"birthdate\" : \"1997-02-16\",\n    \"sex\" : \"male\",\n    \"email\" : \"cristovaoolegario@gmail.com\",\n    \"password\" : \"PodiaEstarJogandoDestiny2\",\n    \"create_time\" : \"0000-00-00\",\n    \"cellphone\" : \"038999726946\",\n    \"phone_number\" : \"\",\n    \"image\" : \"http://potato.com.br\",\n\n    \"address\" : {\n        \"postal_code\" : \"31980-160\",\n        \"location\" : \"Rua\",\n        \"type_location\" : \"Rua CAPETA\",\n        \"neighborhood\" : \"São Gabriel\",\n        \"city\" : \"Belo Horizonte\",\n        \"state\" : \"MG\",\n        \"number_house\" : 99,\n        \"complement\" : \"Apto 202\"\n    },\n\n    \"professional_data\" : {\n        \"post\" : \"Adulador de Dogos\",\n        \"admission_date\" : \"0000-00-00\",\n        \"shift\" : \"Manhã\",\n        \"is_volunteer\" : \"Sim\",\n        \"work_days\" : \"Segunda, Terça, Quarta, Quinta, Sexta\",\n        \"demission_date\" : \"\",\n        \"crmv\" : \"\",\n        \"crmv_uf\" : \"\",\n        \"id_user_groups_fk\" : \"1\"\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Usuário Interno",
+					"request": {
+						"url": "http://localhost:3000/internal-user",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Usuário Interno por ID",
+					"request": {
+						"url": "http://localhost:3000/internal-user/24",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Usuário Interno",
+					"request": {
+						"url": "http://localhost:3000/internal-user",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 32\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário Externo",
+			"description": "",
+			"item": [
+				{
+					"name": "Cadastro de Usuário Externo",
+					"request": {
+						"url": "http://localhost:3000/external-user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code_cpf\" : \"0000002020202\",\n    \"name\" : \"Cristóvão Olegário\",\n    \"surname\" : \"de Castro\",\n    \"birthdate\" : \"1997-02-16\",\n    \"sex\" : \"male\",\n    \"email\" : \"cristovaoolegario@gmail.com\",\n    \"password\" : \"PodiaEstarJogandoDestiny2\",\n    \"create_time\" : \"0000-00-00\",\n    \"cellphone\" : \"038999726946\",\n    \"phone_number\" : \"\",\n    \"image\" : \"http://potato.com.br\",\n\n    \"address\" : {\n        \"postal_code\" : \"31980-160\",\n        \"location\" : \"Brazil\",\n        \"type_location\" : \"WTF IS THAT\",\n        \"neighborhood\" : \"São Gabriel\",\n        \"city\" : \"Belo Horizonte\",\n        \"state\" : \"MG\",\n        \"number_house\" : 99,\n        \"complement\" : \"Apto 202\"\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Usuário Externo",
+					"request": {
+						"url": "http://localhost:3000/external-user",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Usuário Externo por ID",
+					"request": {
+						"url": "http://localhost:3000/external-user/34",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Usuário Externo",
+					"request": {
+						"url": "http://localhost:3000/external-user",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":34\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tipo de Suprimento",
+			"description": "",
+			"item": [
+				{
+					"name": "Pesquisa de Tipos de Suprimento",
+					"request": {
+						"url": "http://localhost:3000/typesupply",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Tipos de Suprimento por ID",
+					"request": {
+						"url": "http://localhost:3000/typesupply/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Tipos de Suprimento por nome",
+					"request": {
+						"url": "http://localhost:3000/typesupply/byname/racao",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Tipo de Suprimento",
+					"request": {
+						"url": "http://localhost:3000/typesupply",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name_supply\" : \"Ração\",\n    \"unit\" : \"kg\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Tipo de Suprimento",
+					"request": {
+						"url": "http://localhost:3000/typesupply",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\" : \"1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Suprimento",
+			"description": "",
+			"item": [
+				{
+					"name": "Pesquisa de Suprimentos",
+					"request": {
+						"url": "http://localhost:3000/supply",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Suprimentos por ID",
+					"request": {
+						"url": "http://localhost:3000/supply/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Suprimentos",
+					"request": {
+						"url": "http://localhost:3000/supply",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\" : \"Ração de gold\",\r\n    \"expiration_date\" : \"2018-12-01\",\r\n    \"entry_date\" : \"2017-12-01\",\r\n    \"quantity\" : \"20\",\r\n    \"update_date\" : \"\",\r\n    \"id_type_supply\" : 2,\r\n    \"id_user_fk\" : 24\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Suprimentos",
+					"request": {
+						"url": "http://localhost:3000/supply",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":10\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tipo de Proposta de Serviço",
+			"description": "",
+			"item": [
+				{
+					"name": "Pesquisa de Tipos de Serviço",
+					"request": {
+						"url": "http://localhost:3000/typeservice",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Tipo de Serviço",
+					"request": {
+						"url": "http://localhost:3000/typeservice",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name_service\":\"Limpador de Dogs\",\n\t\"description\":\"Realização da higiene dos animais\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa do Tipo de Serviço por nome",
+					"request": {
+						"url": "http://localhost:3000/typeservice/byname/faxineiro",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa do Tipo de Serviço por ID",
+					"request": {
+						"url": "http://localhost:3000/typeservice/3",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Tipo de Serviço",
+					"request": {
+						"url": "http://localhost:3000/typeservice",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":4\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proposta de Serviço",
+			"description": "",
+			"item": [
+				{
+					"name": "Pesquisa de Propostas de Serviço",
+					"request": {
+						"url": "http://localhost:3000/service-proposal",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Proposta de Serviço",
+					"request": {
+						"url": "http://localhost:3000/service-proposal",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"date_service\":\"2017-02-01\",\n\t\"approved\":\"\", \n\t\"id_type_service_fk\":\"3\", \n\t\"id_user_fk\":\"35\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Proposta de Serviço",
+					"request": {
+						"url": "http://localhost:3000/service-proposal",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":1\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa Proposta de Serviço pelo ID do Usuário",
+					"request": {
+						"url": "http://localhost:3000/service-proposal/35",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Animal",
+			"description": "",
+			"item": [
+				{
+					"name": "Pesquisa de Animais",
+					"request": {
+						"url": "http://localhost:3000/animal",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisa de Animais por ID",
+					"request": {
+						"url": "http://localhost:3000/animal/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Animal",
+					"request": {
+						"url": "http://localhost:3000/animal",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"size\":\"big\",\n\t\"coat\":\"short\",\n\t\"age\":\"adult\",\n\t\"neutered\":\"1\",\n\t\"birthdate\":\"2017\",\n\t\"vermifuges\":\"1\",\n\t\"name\":\"BIGBOSS\", \n\t\"description\":\"A MELHOR CACATUA QUE VOCE VAI CONHECER\", \n\t\"species\":\"BIIIIIRD\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Exclusão de Animal",
+					"request": {
+						"url": "http://localhost:3000/animal",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":1\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
