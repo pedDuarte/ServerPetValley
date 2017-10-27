@@ -5,6 +5,20 @@
 	"order": [],
 	"folders": [
 		{
+			"name": "Adoção",
+			"description": "",
+			"collectionId": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
+			"order": [
+				"d408e6e4-b1b1-7d78-aaa9-6453e2dec410",
+				"b1524352-8af3-7a34-ad2c-40436985b003",
+				"b6905ceb-405e-2e48-3765-2126757fd710",
+				"765c107d-191e-a199-99d4-dfe5539984fc"
+			],
+			"owner": "2424075",
+			"folders_order": [],
+			"id": "fd29fd41-5ec2-a603-34c0-b20c793a354c"
+		},
+		{
 			"id": "9a1693ad-c3b8-b938-6c6f-9ccf05caea0d",
 			"name": "Animal",
 			"description": "",
@@ -129,7 +143,8 @@
 		"5ee7a6b3-a4d1-1618-9c87-072adc04ef6c",
 		"571d0a03-d387-6462-eed8-9edfe7f21e67",
 		"4c9e3174-e962-fab8-af2b-cb004eb4800c",
-		"9a1693ad-c3b8-b938-6c6f-9ccf05caea0d"
+		"9a1693ad-c3b8-b938-6c6f-9ccf05caea0d",
+		"fd29fd41-5ec2-a603-34c0-b20c793a354c"
 	],
 	"timestamp": 0,
 	"owner": "2424075",
@@ -526,6 +541,35 @@
 			"responses": []
 		},
 		{
+			"id": "765c107d-191e-a199-99d4-dfe5539984fc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/adoption",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509131899420,
+			"name": "Exclusão de Adoção",
+			"description": "",
+			"collectionId": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\":\"35\"\n}"
+		},
+		{
 			"id": "786f51d4-1cae-2eb8-1a04-d44a7d365eed",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -685,6 +729,27 @@
 			"rawModeData": "{\n\t\"size\":\"big\",\n\t\"coat\":\"short\",\n\t\"age\":\"adult\",\n\t\"neutered\":\"1\",\n\t\"birthdate\":\"2017\",\n\t\"vermifuges\":\"1\",\n\t\"name\":\"BIGBOSS\", \n\t\"description\":\"A MELHOR CACATUA QUE VOCE VAI CONHECER\", \n\t\"species\":\"BIIIIIRD\"\n}"
 		},
 		{
+			"id": "b1524352-8af3-7a34-ad2c-40436985b003",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/adoption/35",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509131615902,
+			"name": "Pesquisa de Adoções pelo ID do Usuário",
+			"description": "",
+			"collectionId": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
+			"responses": []
+		},
+		{
 			"id": "b19b94ad-fa9f-b7c5-0728-f33db61a14a7",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -715,6 +780,35 @@
 			"helperAttributes": {},
 			"folder": "487dc8e9-2442-b524-45f3-f32f5fd9af7e",
 			"rawModeData": "{\n\t\"id\":34\n}"
+		},
+		{
+			"id": "b6905ceb-405e-2e48-3765-2126757fd710",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/adoption",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509131832454,
+			"name": "Cadastro de Adoção",
+			"description": "",
+			"collectionId": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
+			"responses": [],
+			"rawModeData": "{\n\t\"id_user_fk\":\"35\", \n\t\"id_animal_fk\":\"2\",\n\t\"adoption_date\":\"2017-10-10\"\n}"
 		},
 		{
 			"id": "b99a2cc9-8169-b694-16fc-2de75ced898f",
@@ -811,6 +905,27 @@
 			"collectionId": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
 			"responses": [],
 			"rawModeData": "{\r\n    \"description\" : \"Ração de gold\",\r\n    \"expiration_date\" : \"2018-12-01\",\r\n    \"entry_date\" : \"2017-12-01\",\r\n    \"quantity\" : \"20\",\r\n    \"update_date\" : \"\",\r\n    \"id_type_supply\" : 2,\r\n    \"id_user_fk\" : 24\r\n}"
+		},
+		{
+			"id": "d408e6e4-b1b1-7d78-aaa9-6453e2dec410",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/adoption",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509131587359,
+			"name": "Pesquisa de Adoções",
+			"description": "",
+			"collectionId": "3eb3afb8-fc6e-963b-83a6-195c8563b96b",
+			"responses": []
 		},
 		{
 			"id": "de340b0b-d49c-5f8b-e65d-1c8a3152f689",
