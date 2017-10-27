@@ -9,6 +9,8 @@ console.log(response.onResult('{batata}'));
 module.exports = function(app){
 
     app.get('/user', function(req, res){
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin','*');
         user.getAllUsers(function(error, result){
             if(error)return res.status(400).json(response.onError(error));
             return res.status(200).json(response.onResult(result));
@@ -73,9 +75,7 @@ module.exports = function(app){
     app.post('/user', upload.array(), function (req, res, next) {
         //Insere o endereço
         res.setHeader('Content-Type', 'application/json');
-        res.setHeader('Access-Control-Allow-Origin','http://localhost:4200');
-        res.setHeader('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+        res.setHeader('Access-Control-Allow-Origin','*');
          address.addAddress(req.body.address, function(error, resultAddress){
             if(error){
                 res.status(400).json(response.onError(error));
