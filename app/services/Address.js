@@ -4,11 +4,11 @@ var connection = dbConnection();
 var Address = {
 
     getAddresses : function(callback){
-        return connection.query("SELECT * FROM Address", callback);
+        return connection.query("SELECT postal_code, location, type_location, neighborhood, city, state, complement, number_house FROM Address", callback);
     },
 
     getAddressById : function(id, callback){
-        return connection.query("SELECT * FROM Address WHERE ID_ADDRESS = ?", [id], callback);
+        return connection.query("SELECT postal_code, location, type_location, neighborhood, city, state, complement, number_house FROM Address WHERE ID_ADDRESS = ?", [id], callback);
     },
 
     addAddress : function(address, callback){
