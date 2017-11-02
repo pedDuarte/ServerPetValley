@@ -34,7 +34,7 @@ var User = {
     },
 
     getLoginParams : function(email, callback){
-        return connection.query("SELECT id_user, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE Email = ?", [email], callback);
+        return connection.query("SELECT id_user as id, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE Email = ?", [email], callback);
     }/*,
 
     getLastUserInserted : function(callback){
