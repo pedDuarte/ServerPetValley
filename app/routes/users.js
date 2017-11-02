@@ -90,6 +90,8 @@ module.exports = function(app){
                 res.status(400).json(error);
             }
             else{
+                console.log(result);
+                console.log(result[0]);
                 password = result[0]['Password']; 
                 console.log(password);
                 if(password === req.body.password){
