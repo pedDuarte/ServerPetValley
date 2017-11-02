@@ -90,16 +90,22 @@ module.exports = function(app){
                 res.status(400).json(error);
             }
             else{
-                password = result[0].password; 
-                console.log(password);
-                if(password === req.body.password){
-                    res.status(200).json(result);
-                    console.log("Deu bom");
-                }
-                else{
-                    res.status(200).json("SENHA INCORRETA");
-                    console.log("Deu ruim");
-                }
+				if(result != ""){					
+					//console.log(result);
+					password = result[0].password; 
+					//console.log(password);
+					if(password === req.body.password){
+						res.status(200).json(result);
+						//console.log("Deu bom");
+					}
+					else{
+						res.status(200).json("SENHA INCORRETA");
+						//console.log("Deu ruim");
+					}
+				}
+				else{
+					res.status(200).json("EMAIL INCORRETO");
+				}
             }                
         })      
         
