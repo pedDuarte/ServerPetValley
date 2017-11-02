@@ -87,16 +87,16 @@ module.exports = function(app){
         user.getLoginParams(req.body.email, function(error, result){
             if(error){
                 //console.log(error);
-                res.status(400).json(response.onError(error));
+                res.status(400).json(error);
             }
             else{
                 password = result[0]['Password'];                
                 if(password == req.body.password){
-                    res.status(200).json(response.onResult(result));
+                    res.status(200).json(result);
                     console.log("Deu bom");
                 }
                 else{
-                    res.status(200).json(response.onError("SENHA INCORRETA"));
+                    res.status(200).json("SENHA INCORRETA");
                     console.log("Deu ruim");
                 }
             }                
