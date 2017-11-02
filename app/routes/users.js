@@ -90,8 +90,9 @@ module.exports = function(app){
                 res.status(400).json(error);
             }
             else{
-                password = result[0]['Password'];                
-                if(password == req.body.password){
+                password = result[0]['Password']; 
+                console.log(password);
+                if(password === req.body.password){
                     res.status(200).json(result);
                     console.log("Deu bom");
                 }
