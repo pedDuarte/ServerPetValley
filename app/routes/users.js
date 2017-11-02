@@ -90,8 +90,8 @@ module.exports = function(app){
                 res.status(400).json(error);
             }
             else{
-                console.log(result[0].TextRow);
-                password = result[0].TextRow.password; 
+                console.log(result[0].password);
+                password = result[0]['textrow']; 
                 console.log(password);
                 if(password === req.body.password){
                     res.status(200).json(result);
