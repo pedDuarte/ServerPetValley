@@ -4,11 +4,11 @@ var connection = dbConnection();
 var ServiceProposal = {
 
     getServiceProposal : function(callback){
-        return connection.query('SELECT * FROM SERVICE_PROPOSAL WHERE 1=1', callback);
+        return connection.query("SELECT id_service_proposal, date_service, approved, id_type_service_fk, id_user_fk FROM SERVICE_PROPOSAL WHERE 1=1", callback);
     },
 
     getServiceProposalByUserId : function(id, callback){
-        return connection.query('SELECT * FROM SERVICE_PROPOSAL WHERE ID_USER_FK = ?', [id], callback);
+        return connection.query("SELECT id_service_proposal, date_service, approved, id_type_service_fk, id_user_fk FROM SERVICE_PROPOSAL WHERE ID_USER_FK = ?", [id], callback);
     },
 
     addServiceProposal : function(serviceProposal, callback){

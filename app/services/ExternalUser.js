@@ -4,11 +4,11 @@ var connection = dbConnection();
 var ExternalUser = {
     
     getExternalUsers : function(callback){
-        return connection.query('SELECT * FROM EXTERNAL_USER', callback);
+        return connection.query('SELECT id_user_fk, id_questionnaire_fk FROM EXTERNAL_USER', callback);
     },
 
     getExternalUserById : function(id, callback){
-        return connection.query('SELECT * FROM EXTERNAL_USER WHERE ID_USER_FK = ?', [id], callback);
+        return connection.query('SELECT id_user_fk, id_questionnaire_fk FROM EXTERNAL_USER WHERE ID_USER_FK = ?', [id], callback);
     },
 
     addExternalUser : function(id_user, callback){

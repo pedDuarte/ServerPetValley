@@ -4,11 +4,11 @@ var connection = dbConnection();
 var InternalUser = {
     
     getInternalUsers : function(callback){
-        return connection.query('SELECT * FROM INTERNAL_USER', callback);
+        return connection.query('SELECT post, admission_date, shift, is_volunteer, work_days, demission_date, crmv, crmv_uf, id_user_fk, id_user_groups_fk FROM INTERNAL_USER', callback);
     },
 
     getInternalUserById : function(id, callback){
-        return connection.query('SELECT * FROM INTERNAL_USER WHERE ID_USER_FK = ?', [id], callback);
+        return connection.query('SELECT post, admission_date, shift, is_volunteer, work_days, demission_date, crmv, crmv_uf, id_user_fk, id_user_groups_fk FROM INTERNAL_USER WHERE ID_USER_FK = ?', [id], callback);
     },
 
     addInternalUser : function(internalUser, id_user_fk, callback){

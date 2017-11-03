@@ -4,11 +4,11 @@ var connection = dbConnection();
 var TypeSupply = {
     
         getTypeSupply : function(callback){
-            return connection.query("SELECT * FROM Type_supply", callback);
+            return connection.query("SELECT id_type_supply, name_supply, unit FROM Type_supply", callback);
         },
     
         getTypeSupplyById : function(id, callback){
-            return connection.query("SELECT * FROM Type_supply WHERE ID_TYPE_SUPPLY = ?", [id], callback);
+            return connection.query("SELECT id_type_supply, name_supply, unit FROM Type_supply WHERE ID_TYPE_SUPPLY = ?", [id], callback);
         },
 
         getTypeSupplyByName : function(name, callback){

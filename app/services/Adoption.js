@@ -4,11 +4,11 @@ var connection = dbConnection();
 var Adoption = {
 
     getAdoptions : function(callback){
-        return connection.query('SELECT * FROM ADOPTION', callback);
+        return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date FROM ADOPTION', callback);
     },
 
     getAdoptionByUserId : function(id, callback){
-        return connection.query('SELECT * FROM ADOPTION WHERE ID_USER_FK = ?',[id], callback);
+        return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date FROM ADOPTION WHERE ID_USER_FK = ?',[id], callback);
     },
 
     addAdoption : function(adoption, callback){

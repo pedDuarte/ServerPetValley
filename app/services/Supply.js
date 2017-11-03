@@ -4,11 +4,11 @@ var connection = dbConnection();
 var Supply = {
 
     getSupplies : function(callback){
-        return connection.query("SELECT * FROM SUPPLY", callback);
+        return connection.query("SELECT id_supply, description, expiration_date, entry_date, quantity, uptade_date, id_user_fk, id_type_supply FROM SUPPLY", callback);
     },
 
     getSupplyById : function(id, callback){
-        return connection.query("SELECT * FROM SUPPLY WHERE ID_SUPPLY = ?", [id], callback);
+        return connection.query("SELECT id_supply, description, expiration_date, entry_date, quantity, uptade_date, id_user_fk, id_type_supply FROM SUPPLY WHERE ID_SUPPLY = ?", [id], callback);
     },
 
     addSupply : function(supply, callback){

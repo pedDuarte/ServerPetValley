@@ -8,11 +8,11 @@ var TypeServiceProposal = {
     },
 
     getTypeServiceProposalById : function(id, callback){
-        return connection.query('SELECT * FROM TYPE_SERVICE WHERE ID_TYPE_SERVICE = ?',[id], callback);
+        return connection.query('SELECT id_type_service, name_service, description FROM TYPE_SERVICE WHERE ID_TYPE_SERVICE = ?',[id], callback);
     },
 
     getTypeServiceProposalByName: function(name, callback){
-        return connection.query('SELECT * FROM TYPE_SERVICE WHERE NAME_SERVICE LIKE ?',"%"+[name]+"%", callback);
+        return connection.query('SELECT id_type_service, name_service, description FROM TYPE_SERVICE WHERE NAME_SERVICE LIKE ?',"%"+[name]+"%", callback);
     },
 
     addTypeServiceProposal : function(typeServiceProposal, callback){
