@@ -7,6 +7,7 @@ Senha: Sistemas123
 var mysql = require('mysql2');
 
 var dataConnection = {
+	connectionLimit : 10,
 	host : 'pucsi.mysql.database.azure.com',
 	user : 'pucsi@pucsi',
 	password : 'Sistemas123',
@@ -17,7 +18,9 @@ var dataConnection = {
 
 module.exports = function()
 {
-	var connection = mysql.createConnection(dataConnection);
+	var pool  = mysql.createPool(dataConnection);
+	//var connection = mysql.createConnection(dataConnection);
 	//connection.connect();
-	return 	connection;
+	//return connection;
+	return pool;
 };
