@@ -95,7 +95,7 @@ module.exports = function(app){
 					password = result[0].password; 
 					//console.log(password);
 					if(password === req.body.password){
-						res.status(200).json(result);
+						res.status(200).json(result[0]);
 						//console.log("Deu bom");
 					}
 					else{
