@@ -1,14 +1,14 @@
-var response = { "sucess" : "false", "details": ""};
+var response = { "success" : "false", "details": ""};
 
 var resp = {
     onResult : function(result){
-        response.sucess = true;
+        response.success = true;
         response.details = result;
         return(response);
     },
 
     onError : function(error){
-        response.sucess = false;
+        response.success = false;
         response.details = error;
         return(response);
     }
