@@ -22,7 +22,7 @@ var User = {
 
     addUser : function(user, id_address_fk, callback){
 
-        if(req.body.image != null && req.body.image != "" ){
+        if(user.image != null && user.image != "" ){
 
             user.image = b64toblob.b64toblob(user.image);
             console.log(user.image);
