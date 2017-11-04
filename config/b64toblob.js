@@ -1,4 +1,5 @@
-var b64toBlob = {
+var b64toBlob = require('b64-to-blob');
+var b64tobl = {
     b64toblob : function(b64Data, contentType, sliceSize) {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;
@@ -24,4 +25,4 @@ var b64toBlob = {
   }
 };
 
-  module.exports = b64toBlob;
+  module.exports = b64tobl;
