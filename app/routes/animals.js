@@ -48,8 +48,8 @@ module.exports = function(app){
     });
 
     //Deleta um animal por Id
-    app.delete('/animal', function(req, res){
-        animal.removeAnimal(req.body.id, function(error, result){
+    app.delete('/animal/:id_animal', function(req, res){
+        animal.removeAnimal(req.params.id_animal, function(error, result){
             if(error){
                 console.log(error);
                 return res.status(400).json(response.onError(error));
