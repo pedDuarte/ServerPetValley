@@ -47,6 +47,20 @@ module.exports = function(app){
         });
     });
 
+    //Atualiza animal
+    app.put('/animal', upload.array(), function(req, res){
+        animal.updateAnimal(req.body, function(error, result){
+            if(error){
+                console.log(error);
+                return res.status(400).json(response.onError(error));
+            }
+            else{
+                //console.log(result);
+                return res.status(200).json(response.onResult(result.insertId));
+            }
+        });
+    });
+
     //Deleta um animal por Id
     app.delete('/animal/:id_animal', function(req, res){
         animal.removeAnimal(req.params.id_animal, function(error, result){

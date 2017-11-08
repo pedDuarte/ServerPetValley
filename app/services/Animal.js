@@ -17,7 +17,7 @@ var Animal = {
     },
 
     updateAnimal : function(animal, callback){
-        return connection.query('UPDATE ANIMAL SET(SIZE = ?, COAT = ?, AGE = ?, NEUTERED = ?, VERMIFUGES = ?, NAME = ?, DESCRIPTION = ?, SPECIES = ?, SEX = ?) WHERE ID_ANIMAL = ?',
+        return connection.query('UPDATE ANIMAL SET SIZE = ?, COAT = ?, AGE = ?, NEUTERED = ?, VERMIFUGES = ?, NAME = ?, DESCRIPTION = ?, SPECIES = ?, SEX = ? WHERE ID_ANIMAL = ?',
         [animal.size, animal.coat, animal.age, animal.neutered, animal.vermifuges, animal.name, animal.description, animal.species, animal.sex, animal.id_animal], callback);
     },
 
