@@ -134,6 +134,20 @@ module.exports = function(app){
             }        
         });
     });
+
+    //Atualiza um usuário
+    app.put('/user', upload.array(), function(req, res){
+        user.updateUser(req.body, function(error, result){
+            if(error){
+                console.log(error);
+                return res.status(400).json(response.onError(error));
+            }
+            else{
+                //console.log(result);
+                return res.status(200).json(response.onResult(result.insertId));
+            }
+        });
+    });
     
     //Remove um usuário
     app.delete('/user', function(req,res){        
