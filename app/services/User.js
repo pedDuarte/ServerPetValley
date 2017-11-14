@@ -1,5 +1,4 @@
 var dbConnection = require("./../../config/dbConnection");
-var b64toblob = require('./../../config/b64toblob');
 var connection = dbConnection();
 
 var User = {
