@@ -150,8 +150,8 @@ module.exports = function(app){
     });
     
     //Remove um usuário
-    app.delete('/user', function(req,res){        
-        user.removeUser(req.body.id, function(error, result){
+    app.delete('/user/:id_user', function(req,res){        
+        user.removeUser(req.params.id_user, function(error, result){
             if(error){
                 console.log(error);
                 return res.status(400).json(response.onError(error));
