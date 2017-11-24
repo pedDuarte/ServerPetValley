@@ -1,5 +1,6 @@
 var dbConnection = require("./../../config/dbConnection");
 var connection = dbConnection();
+var fs = require("fs");
 
 var User = {
 
@@ -21,14 +22,13 @@ var User = {
 
     addUser : function(user, id_address_fk, callback){
 
-       /* if(user.image != null && user.image != "" ){
-
-            user.image = b64toblob.b64toblob(user.image);
-            console.log(user.image);
-        }*/
+        var bitmap = new Buffer(user.image, 'base64');
+        var image_path = "public/images/user/"+user.name+user.code_cpf+".jpg";
+        fs.writeFileSync(image_path, bitmap);
+        //console.log(image_path);
 
         return connection.query("INSERT INTO USER (CODE_CPF, NAME, SURNAME, BIRTHDATE, SEX, EMAIL, PASSWORD, CREATE_TIME, CELLPHONE, PHONE_NUMBER, IMAGE, ID_ADDRESS_FK) VALUES(?,?,?,?,?,?,?,now(),?,?,?,?);"
-        ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.cellphone, user.phone_number, user.image, id_address_fk], callback);
+        ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.cellphone, user.phone_number, image_path, id_address_fk], callback);
     },   
 
     updateUser : function(user, callback){

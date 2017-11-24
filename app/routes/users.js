@@ -4,13 +4,10 @@ var response = require('./../../config/response');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 
-
 module.exports = function(app){
 
     //Pesquisa todos os usuários
-    app.get('/user', function(req, res){
-        res.setHeader('Content-Type', 'application/json');
-        res.setHeader('Access-Control-Allow-Origin','*');
+    app.get('/user', function(req, res){        
         user.getAllUsers(function(error, result){
             if(error){
                 console.log(error);
@@ -25,7 +22,6 @@ module.exports = function(app){
 
     //Pesquisa um usuário pelo Id
     app.get('/user/:id', function(req,res){
-
         user.getUserById(req.params.id, function(error, result){
             if(error){
                 console.log(error);
@@ -39,8 +35,7 @@ module.exports = function(app){
     });
 
     //Pesquisa um usuário pelo nome
-    app.get('/user/byname/:name', function(req,res){
-        
+    app.get('/user/byname/:name', function(req,res){        
         user.getUserByName(req.params.name, function(error, result){
             if(error){
                 console.log(error);
@@ -55,7 +50,6 @@ module.exports = function(app){
 
     //Pesquisa um usuário pelo CPF
     app.get('/user/bycpf/:cpf', function(req,res){
-
         user.getUserByCPF(req.params.cpf, function(error, result){
             if(error){
                 console.log(error);
@@ -66,19 +60,10 @@ module.exports = function(app){
                 return res.status(200).json(result);
             }
         })
-    });    
+    });
     
-    /*app.get('/login/:email', function(req,res){
-        user.getLoginParams(req.params.email, function(error, result){
-                if(error)return res.status(400).json(error);
-                return res.status(200).json(result);
-                })
-    }); */
-    
-    app.post('/login', upload.array(), function (req, res, next) {
+    app.post('/login', function (req, res, next) {
         var password = '';
-        res.setHeader('Content-Type', 'application/json');
-        res.setHeader('Access-Control-Allow-Origin','*');
         //console.log("metodo post");
         console.log(req.body);
         console.log(req.body.email);
@@ -112,16 +97,14 @@ module.exports = function(app){
     });
 
     //Adiciona um novo usuário
-    app.post('/user', upload.array(), function (req, res, next) {
+    app.post('/user', function (req, res, next) {
         //Insere o endereço
-        res.setHeader('Content-Type', 'application/json');
-        res.setHeader('Access-Control-Allow-Origin','*');
          address.addAddress(req.body.address, function(error, resultAddress){
             if(error){
                 console.log(error);
                 res.status(400).json(response.onError(error));
             }
-            else{
+            else{            
                 user.addUser(req.body, resultAddress.insertId, function(error, result){
                     if(error){
                         console.log(error);
@@ -130,13 +113,13 @@ module.exports = function(app){
                     else{
                         res.status(200).json(response.onResult(result.insertId));
                     }                        
-                });                
+                });                                  
             }        
         });
     });
 
     //Atualiza um usuário
-    app.put('/user', upload.array(), function(req, res){
+    app.put('/user', function(req, res){
         user.updateUser(req.body, function(error, result){
             if(error){
                 console.log(error);
