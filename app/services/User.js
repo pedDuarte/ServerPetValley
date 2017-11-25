@@ -23,7 +23,7 @@ var User = {
     addUser : function(user, id_address_fk, callback){
 
         var bitmap = new Buffer(user.image, 'base64');
-        var image_path = "public/images/user/"+user.name+user.code_cpf+".jpg";
+        var image_path = "public/images/user/"+user.name+Date.now()+".jpg";
         fs.writeFileSync(image_path, bitmap);
         //console.log(image_path);
 
