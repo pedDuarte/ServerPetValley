@@ -22,8 +22,11 @@ var Animal = {
     },
 
     updateAnimal : function(animal, callback){
-        return connection.query('UPDATE ANIMAL SET SIZE = ?, COAT = ?, AGE = ?, NEUTERED = ?, VERMIFUGES = ?, NAME = ?, DESCRIPTION = ?, SPECIES = ?, SEX = ? WHERE ID_ANIMAL = ?',
-        [animal.size, animal.coat, animal.age, animal.neutered, animal.vermifuges, animal.name, animal.description, animal.species, animal.sex, animal.id_animal], callback);
+        var bitmap = new Buffer(animal.avatar, 'base64');
+        var image_path = "public/images/pet/"+animal.name+Date.now()+".jpg";
+        fs.writeFileSync(image_path, bitmap);
+        return connection.query('UPDATE ANIMAL SET SIZE = ?, COAT = ?, AGE = ?, NEUTERED = ?, VERMIFUGES = ?, NAME = ?, DESCRIPTION = ?, SPECIES = ?, SEX = ?, AVATAR = ? WHERE ID_ANIMAL = ?',
+        [animal.size, animal.coat, animal.age, animal.neutered, animal.vermifuges, animal.name, animal.description, animal.species, animal.sex, image_path, animal.id_animal], callback);
     },
 
     removeAnimal : function(id, callback){
