@@ -36,7 +36,7 @@ var User = {
         var image_path = "public/images/user/"+user.name+Date.now()+".jpg";
         fs.writeFileSync(image_path, bitmap);
 
-        return connection.query("UPDATE USER SET(CODE_CPF = ?, NAME = ?, SURNAME = ?, BIRTHDATE = ?, SEX = ?, EMAIL = ?, PASSWORD = ?, CREATE_TIME = ?, CELLPHONE = ?, PHONENUMBER = ?, IMAGE = ?, ID_ADDRESS_FK = ?) WHERE ID_USER = ?;"
+        return connection.query("UPDATE USER SET CODE_CPF = ?, NAME = ?, SURNAME = ?, BIRTHDATE = ?, SEX = ?, EMAIL = ?, PASSWORD = ?, CREATE_TIME = ?, CELLPHONE = ?, PHONENUMBER = ?, IMAGE = ?, ID_ADDRESS_FK = ? WHERE ID_USER = ?;"
         ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.create_time, user.cellphone, user.phone_number, image_path, user.id_address_fk, user.id_user], callback)
     },
 
