@@ -22,10 +22,12 @@ var User = {
 
     addUser : function(user, id_address_fk, callback){
 
-        var bitmap = new Buffer(user.image, 'base64');
-        var image_path = "public/images/user/"+user.name+Date.now()+".jpg";
-        fs.writeFileSync(image_path, bitmap);
-        //console.log(image_path);
+        var image_path = "public/images/user/user_default.png";
+        if(user.image != '' || user.image != ""){
+            var bitmap = new Buffer(user.image, 'base64');
+            image_path = "public/images/user/"+user.name+Date.now()+".jpg";
+            fs.writeFileSync(image_path, bitmap);
+        }
 
         return connection.query("INSERT INTO USER (CODE_CPF, NAME, SURNAME, BIRTHDATE, SEX, EMAIL, PASSWORD, CREATE_TIME, CELLPHONE, PHONE_NUMBER, IMAGE, ID_ADDRESS_FK) VALUES(?,?,?,?,?,?,?,now(),?,?,?,?);"
         ,[user.code_cpf,user.name, user.surname, user.birthdate, user.sex, user.email, user.password, user.cellphone, user.phone_number, image_path, id_address_fk], callback);
@@ -33,7 +35,7 @@ var User = {
 
     updateUser : function(user, callback){
         var image_path = "public/images/user/user_default.png";
-        if(user.image != ""){
+        if(user.image != '' || user.image != ""){
             var bitmap = new Buffer(user.image, 'base64');
             image_path = "public/images/user/"+user.name+Date.now()+".jpg";
             fs.writeFileSync(image_path, bitmap);
