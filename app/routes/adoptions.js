@@ -33,6 +33,20 @@ module.exports = function(app){
         })
     });
 
+    //Número de Registros adoção
+    app.get('/adoptioncount', function(req, res){
+        adoption.getCount(function(error, result){
+            if(error){
+                console.log(error);
+                return res.status(400).json(error);
+            }
+            else{
+                //console.log(result);
+                return res.status(200).json(result);
+            }
+        })
+    });
+
     //Adiciona um novo animal
     app.post('/adoption', upload.array(), function(req, res){
         adoption.addAdoption(req.body, function(error, result){

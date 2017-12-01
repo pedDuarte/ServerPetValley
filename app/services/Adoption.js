@@ -7,6 +7,10 @@ var Adoption = {
         return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date FROM ADOPTION', callback);
     },
 
+    getCount : function(callback){
+        return connection.query('SELECT (SELECT count(ad.adoption_date) FROM adoption ad INNER JOIN user u  ON u.id_user = ad.id_user_fk INNER JOIN animal an ON ad.id_animal_fk = an.id_animal) as num_adoptions, (SELECT count(id_animal) FROM animal) as num_animals ', callback);
+    },
+
     getAdoptionByUserId : function(id, callback){
         return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date FROM ADOPTION WHERE ID_USER_FK = ?',[id], callback);
     },
