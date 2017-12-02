@@ -5,19 +5,19 @@ var fs = require("fs");
 var User = {
 
     getAllUsers : function(callback){
-        return connection.query("SELECT id_user, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User", callback);
+        return connection.query("SELECT id_user as id, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User", callback);
     },
 
     getUserById : function(id, callback){
-        return connection.query("SELECT id_user, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE ID_USER = ?", [id], callback);
+        return connection.query("SELECT id_user as id, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE ID_USER = ?", [id], callback);
     },
 
     getUserByName : function(name, callback){
-        return connection.query("SELECT id_user, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE NAME LIKE ?", ["%"+name+"%"], callback);
+        return connection.query("SELECT id_user as id, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE NAME LIKE ?", ["%"+name+"%"], callback);
     },
 
     getUserByCPF : function(cpf, callback){
-        return connection.query("SELECT id_user, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE CODE_CPF = ? ", [cpf], callback);
+        return connection.query("SELECT id_user as id, code_cpf, name, surname, birthdate, sex, email, password, create_time, cellphone, phone_number, image, id_address_fk FROM User WHERE CODE_CPF = ? ", [cpf], callback);
     },
 
     addUser : function(user, id_address_fk, callback){
