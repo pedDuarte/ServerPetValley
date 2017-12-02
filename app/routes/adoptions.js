@@ -76,6 +76,20 @@ module.exports = function(app){
         });
     });
 
+    //Atualiza uma adoção
+    app.put('/adoption', function(req, res){
+        adoption.updateAdoption(req.body, function(error, result){
+            if(error){
+                console.log(error);
+                return res.status(400).json(response.onError(error));
+            }
+            else{
+                //console.log(result);
+                return res.status(200).json(response.onResult(result.affectedRows));
+            }
+        });
+    });
+
     //Deleta um animal por Id
     app.delete('/adoption', function(req, res){
         adoption.removeAdoption(req.body.id, function(error, result){
