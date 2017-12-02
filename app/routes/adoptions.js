@@ -63,7 +63,7 @@ module.exports = function(app){
     });
 
     //Adiciona um novo animal
-    app.post('/adoption', upload.array(), function(req, res){
+    app.post('/adoption', function(req, res){
         adoption.addAdoption(req.body, function(error, result){
             if(error){
                 console.log(error);

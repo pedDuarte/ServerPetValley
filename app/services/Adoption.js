@@ -4,7 +4,7 @@ var connection = dbConnection();
 var Adoption = {
 
     getAdoptions : function(callback){
-        return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date FROM ADOPTION', callback);
+        return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date, is_approved FROM ADOPTION', callback);
     },
 
     getCount : function(callback){
@@ -12,12 +12,17 @@ var Adoption = {
     },
 
     getAdoptionByUserId : function(id, callback){
-        return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date FROM ADOPTION WHERE ID_USER_FK = ?',[id], callback);
+        return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date, is_approved FROM ADOPTION WHERE ID_USER_FK = ?',[id], callback);
     },
 
     addAdoption : function(adoption, callback){
-        return connection.query('INSERT INTO ADOPTION(ID_USER_FK, ID_ANIMAL_FK, ADOPTION_DATE)  VALUES(?, ?, ?)',
-        [adoption.id_user_fk, adoption.id_animal_fk, adoption.adoption_date], callback);
+        return connection.query('INSERT INTO ADOPTION(ID_USER_FK, ID_ANIMAL_FK, ADOPTION_DATE, IS_APPROVED)  VALUES(?, ?, ?, ?)',
+        [adoption.id_user_fk, adoption.id_animal_fk, adoption.adoption_date, adoption.is_approved], callback);
+    },
+
+    updateAdoption : function(adoption, callback){
+        return connection.query('UPDATE ADOPTION SET ID_USER_FK = ?, ID_ANIMAL_FK = ?, ADOPTION_DATE = ?, IS_APPROVED = ?  WHERE ID_USER_FK = ? and ID_ANIMAL_FK = ?',
+        [adoption.id_user_fk, adoption.id_animal_fk, adoption.adoption_date, adoption.is_approved, adoption.id_user_fk, adoption.id_animal_fk], callback);
     },
 
     removeAdoption : function(id_user, callback){
