@@ -1,4 +1,5 @@
 var adoption = require('./../services/Adoption');
+var animal = require('./../services/Animal');
 var response = require('./../../config/response');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
@@ -10,11 +11,11 @@ module.exports = function(app){
         adoption.getAdoptions(function(error, result){
             if(error){
                 console.log(error);
-                return res.status(400).json(response.onError(error));
+                return res.status(400).json(error);
             }
             else{
                 //console.log(result);
-                return res.status(200).json(response.onResult(result));
+                return res.status(200).json(result);
             }
         })
     });
@@ -36,6 +37,20 @@ module.exports = function(app){
     //Número de Registros adoção
     app.get('/adoptioncount', function(req, res){
         adoption.getCount(function(error, result){
+            if(error){
+                console.log(error);
+                return res.status(400).json(error);
+            }
+            else{
+                //console.log(result);
+                return res.status(200).json(result);
+            }
+        })
+    });
+
+    //Lista de animais adotados
+    app.get('/adoptionlist', function(req, res){
+        animal.getAdoptedAnimals(function(error, result){
             if(error){
                 console.log(error);
                 return res.status(400).json(error);

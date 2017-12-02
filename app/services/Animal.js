@@ -22,15 +22,16 @@ var Animal = {
     },
 
     updateAnimal : function(animal, callback){
-        var bitmap = new Buffer(animal.avatar, 'base64');
-        var image_path = "public/images/pet/"+animal.name+Date.now()+".jpg";
-        fs.writeFileSync(image_path, bitmap);
         return connection.query('UPDATE ANIMAL SET SIZE = ?, COAT = ?, AGE = ?, NEUTERED = ?, VERMIFUGES = ?, NAME = ?, DESCRIPTION = ?, SPECIES = ?, SEX = ?, AVATAR = ? WHERE ID_ANIMAL = ?',
         [animal.size, animal.coat, animal.age, animal.neutered, animal.vermifuges, animal.name, animal.description, animal.species, animal.sex, image_path, animal.id_animal], callback);
     },
 
     removeAnimal : function(id, callback){
         return connection.query('DELETE FROM ANIMAL WHERE ID_ANIMAL = ?', [id], callback);
+    },
+
+    getAdoptedAnimals : function(callback){
+        return connection.query('SELECT u.id_user, u.name as user_name, u.surname, u.cellphone, u.phone_number, an.id_animal, an.size, an.coat, an.age, an.neutered, an.vermifuges, an.name as animal_name, an.description, an.species, an.sex, ad.adoption_date  FROM adoption ad INNER JOIN user u ON u.id_user = ad.id_user_fk INNER JOIN animal an ON ad.id_animal_fk = an.id_animal', callback);
     }
 };
 
