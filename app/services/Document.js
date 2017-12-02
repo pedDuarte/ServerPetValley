@@ -1,6 +1,7 @@
 //id_document, type_document, image_document, description, id_user_fk
 var dbConnection = require("./../../config/dbConnection");
 var connection = dbConnection();
+var fs = require('fs');
 
 var Document = {
 
@@ -13,12 +14,17 @@ var Document = {
     },
 
     addDocument : function(document, callback){
+
+        var bitmap = new Buffer(document.image_document, 'base64');
+        var image_path = "public/documents/user/"+document.id_user_fk+Date.now()+".jpg";
+        fs.writeFileSync(image_path, bitmap);
+
         return connection.query("INSERT INTO DOCUMENT ( type_document, image_document, description, id_user_fk) VALUES(?,?,?,?);"
-        ,[document.type_document, document.image_document, document.description, document.id_user_fk], callback);
+        ,[document.type_document, image_path, document.description, document.id_user_fk], callback);
     },   
 
     updateDocument : function(id, document, callback){
-        return connection.query("UPDATE DOCUMENT SET(type_document = ?, image_document = ?, description = ?) WHERE ID_DOCUMENT = ?;"
+        return connection.query("UPDATE DOCUMENT SET type_document = ?, image_document = ?, description = ? WHERE ID_DOCUMENT = ?;"
         ,[document.type_document, document.image_document, document.description, document.id_user_fk, id], callback);
     },
 

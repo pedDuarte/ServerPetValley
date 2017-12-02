@@ -6,7 +6,7 @@ var upload = multer(); // for parsing multipart/form-data
 module.exports = function(app){
 
     //Pesquisa todos os document
-    app.get('/document', function(req, res){
+    /*app.get('/document', function(req, res){
         document.getAllDocuments(function(error, result){
             if(error){
                 console.log(error);
@@ -31,10 +31,10 @@ module.exports = function(app){
                 return res.status(200).json(result);
             }
         })
-    });
+    });*/
 
     //Adiciona um novo documento
-    app.post('/document', upload.array(), function(req, res){
+    app.post('/document', function(req, res){
         document.addDocument(req.body, function(error, result){
             if(error){
                 console.log(error);
@@ -48,7 +48,7 @@ module.exports = function(app){
     });
 
     //Deleta um documento por Id
-    app.delete('/document', function(req, res){
+    /*app.delete('/document', function(req, res){
         document.removeDocument(req.body.id, function(error, result){
             if(error){
                 console.log(error);
@@ -59,6 +59,6 @@ module.exports = function(app){
                 return res.status(200).json(response.onResult(result.affectedRows));
             }
         })
-    });
+    });*/
 
 }
