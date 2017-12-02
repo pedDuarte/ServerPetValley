@@ -36,11 +36,11 @@ module.exports = function(app){
         visithouse.updateVisitHouse(req.body, function(error, result){
             if(error){
                 console.log(error);
-                return res.status(400).json(error);
+                return res.status(400).json(responde.onError(error));
             }
             else{
                 //console.log(result);
-                return res.status(200).json(result);
+                return res.status(200).json(response.onResult(result.affectedRows));
             }
         })
     });
