@@ -25,8 +25,8 @@ var Adoption = {
     },
 
     updateAdoption : function(adoption, callback){
-        return connection.query('UPDATE ADOPTION SET ID_USER_FK = ?, ID_ANIMAL_FK = ?, ADOPTION_DATE = ?, IS_APPROVED = ?  WHERE ID_USER_FK = ? and ID_ANIMAL_FK = ?',
-        [adoption.id_user_fk, adoption.id_animal_fk, adoption.adoption_date, adoption.is_approved, adoption.id_user_fk, adoption.id_animal_fk], callback);
+        return connection.query('UPDATE ADOPTION SET ID_USER_FK = ?, ID_ANIMAL_FK = ?, ADOPTION_DATE = now(), IS_APPROVED = ?  WHERE ID_USER_FK = ? and ID_ANIMAL_FK = ?',
+        [adoption.id_user_fk, adoption.id_animal_fk, adoption.is_approved, adoption.id_user_fk, adoption.id_animal_fk], callback);
     },
 
     removeAdoption : function(id_user, callback){
