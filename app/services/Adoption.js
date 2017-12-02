@@ -15,9 +15,13 @@ var Adoption = {
         return connection.query('SELECT id_user_fk, id_animal_fk, adoption_date, is_approved FROM ADOPTION WHERE ID_USER_FK = ?',[id], callback);
     },
 
+    getPendentAdoptions : function(callback){
+        return connection.query('SELECT u.id_user, u.name as user_name, an.id_animal, an.name as animal_name, an.species, ad.adoption_date  FROM adoption ad INNER JOIN user u ON u.id_user = ad.id_user_fk INNER JOIN animal an ON ad.id_animal_fk = an.id_animal WHERE is_approved = 0;', callback);
+    },
+
     addAdoption : function(adoption, callback){
-        return connection.query('INSERT INTO ADOPTION(ID_USER_FK, ID_ANIMAL_FK, ADOPTION_DATE, IS_APPROVED)  VALUES(?, ?, ?, ?)',
-        [adoption.id_user_fk, adoption.id_animal_fk, adoption.adoption_date, adoption.is_approved], callback);
+        return connection.query('INSERT INTO ADOPTION(ID_USER_FK, ID_ANIMAL_FK, ADOPTION_DATE, IS_APPROVED)  VALUES(?, ?, now(), ?)',
+        [adoption.id_user_fk, adoption.id_animal_fk, adoption.is_approved], callback);
     },
 
     updateAdoption : function(adoption, callback){
