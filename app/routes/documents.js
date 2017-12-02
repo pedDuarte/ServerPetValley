@@ -6,7 +6,7 @@ var upload = multer(); // for parsing multipart/form-data
 module.exports = function(app){
 
     //Pesquisa todos os document
-    /*app.get('/document', function(req, res){
+    app.get('/document', function(req, res){
         document.getAllDocuments(function(error, result){
             if(error){
                 console.log(error);
@@ -19,7 +19,7 @@ module.exports = function(app){
         })
     });
 
-    //Pesquisa documentos pelo Id do usuário
+    /*//Pesquisa documentos pelo Id do usuário
     app.get('/document/:id', function(req, res){
         document.getDocumentByUserId(req.params.id, function(error, result){
             if(error){
