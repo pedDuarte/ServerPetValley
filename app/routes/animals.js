@@ -56,7 +56,7 @@ module.exports = function(app){
             }
             else{
                 //console.log(result);
-                return res.status(200).json(response.onResult(result.insertId));
+                return res.status(200).json(response.onResult(result.affectedRows));
             }
         });
     });
